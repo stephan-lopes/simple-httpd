@@ -1,0 +1,14 @@
+---
+- name: "Instalando HTTPD"
+  package:
+    name: "apache2"
+    state: "present"
+  notify: 
+    - restart apache
+
+- name: "Copiando arquivos de Index"
+  copy:
+    src: "index.html"
+    dest: "/var/www/html/"
+  notify: 
+    - restart apache

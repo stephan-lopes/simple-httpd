@@ -1,2 +1,6 @@
 ---
-# tasks file for simple-httpd
+- include: install.yml
+  when: httpd_state != "absent"
+
+- include: remove.yml
+  when: httpd_state == "absent"

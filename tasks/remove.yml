@@ -1,0 +1,10 @@
+---
+- name: Removendo HTTPD
+  package: 
+    name: apache2
+    state: absent
+
+- name: Removendo Diretório /var/www/html
+  file:
+    path: "/var/www/"
+    state: absent

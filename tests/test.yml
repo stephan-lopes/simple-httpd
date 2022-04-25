@@ -1,5 +1,10 @@
 ---
 - hosts: localhost
-  remote_user: root
+  connection: local
+  gather_facts: yes
+
+  become: true
   roles:
-    - simple-httpd
+    - role: simple-httpd
+      vars:
+        - httpd_state: present

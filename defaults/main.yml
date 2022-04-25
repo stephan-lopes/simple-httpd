@@ -1,2 +1,2 @@
 ---
-# defaults file for simple-httpd
+httpd_state: present
