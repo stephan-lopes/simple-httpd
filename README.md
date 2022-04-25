@@ -1,38 +1,53 @@
-Role Name
+Simple Apache2/Httpd Server
 =========
 
-A brief description of the role goes here.
+A simple httpd server.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+  * Python 2.7
+  * Ubuntu 20.04
+  * Ansible >= 2.9
 
 Role Variables
 --------------
+We have only one variable in the function, and it is set to install or remove HTTPD/Apache2.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+```yaml
+httpd_state: present # or absent
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+N/A
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Below are some installation and removal examples:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+### Install HTTPD
 
-License
--------
+An example of installation would be the one below, using the httpd_state variable. If it is not informed, the default value is present.
 
-BSD
+``` yaml
+- hosts: servers
+  roles:
+      - role: stephan_lopes.simple-httpd
+        vars: 
+        - httpd_state: present
+```
 
-Author Information
-------------------
+### Remove HTTPD
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+To remove, set the absent value in the httpd_state variable.
+
+``` yaml
+- hosts: servers
+  roles:
+      - role: stephan_lopes.simple-httpd
+        vars: 
+        - httpd_state: absent
+```

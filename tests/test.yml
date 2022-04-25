@@ -7,4 +7,5 @@
   roles:
     - role: simple-httpd
       vars:
-        - httpd_state: present
+        # - httpd_state: present
+        - httpd_state: absent
