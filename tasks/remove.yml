@@ -1,8 +1,9 @@
 ---
 - name: Removendo HTTPD
-  package: 
+  apt: 
     name: apache2
     state: absent
+    purge: true
 
 - name: Removendo Diretório /var/www/html
   file:
